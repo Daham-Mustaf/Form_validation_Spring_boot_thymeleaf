@@ -10,7 +10,7 @@ import org.springframework.validation.Errors;
 import app.valid.model.Person;
 
 @org.springframework.stereotype.Controller
-public class Controller {
+public class UserController {
 
 	@GetMapping("/register")
 	public ModelAndView showForm(Person person) {
