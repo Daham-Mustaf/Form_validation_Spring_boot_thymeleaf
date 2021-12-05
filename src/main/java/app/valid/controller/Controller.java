@@ -12,23 +12,26 @@ import app.valid.model.Person;
 @org.springframework.stereotype.Controller
 public class Controller {
 
-	@GetMapping("/")
+	@GetMapping("/register")
 	public ModelAndView showForm(Person person) {
 
 		ModelAndView modelAndView = new ModelAndView("register");
 		modelAndView.addObject("person", person);
 		return modelAndView;
 	}
-
-	@PostMapping("/")
-	public String register(@Valid Person person, Errors errors, Model model) {
+	
+	@PostMapping("/register")
+	public ModelAndView formRegistration(@Valid Person person, Errors errors) {
+		ModelAndView modelAndView = new ModelAndView("register");
+		modelAndView.addObject("person", person);
 		if (errors.hasErrors()) {
-			return "register";
+			return modelAndView;
 		} else {
-			model.addAttribute("message", "Registration successfully...");
-			return "register";
+			modelAndView.addObject("message", "Registration successfully...");
+			return modelAndView;
 		}
 
 	}
+	
 
 }

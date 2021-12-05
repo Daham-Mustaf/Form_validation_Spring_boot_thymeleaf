@@ -23,7 +23,7 @@ public class Person {
 	private String email;
 
 	@Pattern(regexp = "[7-9][0-9]{9}", message = "invalid mobile number!")
-	@Size(max = 10, message = "digits should be 10!")
+	@Size(max = 10, message = "digits should be more than 10!")
 	private String phon;
 
 }
