@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.validation.Errors;
 import app.valid.model.Person;
@@ -21,7 +22,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/register")
-	public ModelAndView formRegistration(@Valid @ModelAttribute("person") Person person, Errors errors) {
+	public ModelAndView formRegistration(@RequestBody @Valid @ModelAttribute("person") Person person, Errors errors) {
 		ModelAndView modelAndView = new ModelAndView("register");
 		modelAndView.addObject("person", person);
 		if (errors.hasErrors()) {
